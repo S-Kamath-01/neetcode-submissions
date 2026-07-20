@@ -1,0 +1,29 @@
+class MinStack {
+public:
+    //Two Stacks Approach
+    stack<int> stk;
+    stack<int> minStack;
+
+    MinStack() {}
+    
+    void push(int val) {
+        stk.push(val);
+        val = min(val,minStack.empty()?val:minStack.top());
+        minStack.push(val);
+    }
+    
+    void pop() {
+        stk.pop();
+        minStack.pop();
+    }
+    
+    int top() {
+        return stk.top();
+    }
+    
+    int getMin() {
+        return minStack.top();
+    }
+    //Time Complexity - O(1) for all operations
+    //Space Complexity - O(n)
+};
